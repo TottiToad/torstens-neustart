@@ -4,12 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Torstens Neustart</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="assets/icon.png" type="image/png" />
+  <style>
+    body { font-family: sans-serif; background: #f0f4f8; color: #111; margin: 0; padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; }
+    .card { background: white; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 500px; width: 100%; }
+    .buttons { margin-top: 2rem; display: flex; justify-content: space-between; }
+    button { padding: 0.5rem 1rem; font-size: 1rem; border: none; border-radius: 0.5rem; background: #004aad; color: white; cursor: pointer; }
+    button:disabled { background: #ccc; cursor: default; }
+  </style>
 </head>
-<body style="font-family: sans-serif; background: #f0f4f8; padding: 2rem;">
-  <h1>Du bist nicht zerbrochen. Du bist entbunden.</h1>
-  <p>Nicht von ihr – sondern von der Illusion, dass du nur im Spiegel einer Frau etwas wert bist.</p>
-  <script>
-    alert('Willkommen bei deinem täglichen Neustart');
-  </script>
+<body>
+  <div class="card">
+    <h2 id="title">Willkommen bei deinem täglichen Neustart</h2>
+    <p id="text">Du bist nicht zerbrochen. Du bist entbunden.<br> Nicht von ihr – sondern von der Illusion, dass du nur im Spiegel einer Frau etwas wert bist.</p>
+    <div class="buttons">
+      <button onclick="prevSlide()" id="prevBtn" disabled>Zurück</button>
+      <button onclick="nextSlide()" id="nextBtn">Weiter</button>
+    </div>
+  </div>
+  <audio id="bg-music" src="assets/music.mp3" loop autoplay></audio>
+  <script src="app.js"></script>
 </body>
 </html>
