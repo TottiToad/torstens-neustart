@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Torstens Neustart</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="assets/icon.png" type="image/png">
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="assets/icon.png" type="image/png" />
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging-compat.js"></script>
   <style>
@@ -25,37 +25,44 @@
       <button onclick="nextSlide()" id="nextBtn">Weiter</button>
     </div>
   </div>
-  <audio id="bg-music" src="assets/music.mp3" autoplay loop></audio>
+  <audio id="bg-music" src="assets/music.mp3" autoplay loop playsinline></audio>
   <script src="app.js"></script>
   <script>
-    
-// Firebase-Konfiguration (ersetze ggf. durch deine eigenen Daten)
-const firebaseConfig = {
-  apiKey: "AIzaSyB3XKU6rccCKmGTquhTnVCc2GER3mCmdLM",
-  authDomain: "torstens-neustart.firebaseapp.com",
-  projectId: "torstens-neustart",
-  storageBucket: "torstens-neustart.firebasestorage.app",
-  messagingSenderId: "568603747598",
-  appId: "1:568603747598:web:00cb5cac90b8e423cce35f"
-};
+    const firebaseConfig = {
+      apiKey: "AIzaSyB3XKU6rccCKmGTquhTnVCc2GER3mCmdLM",
+      authDomain: "torstens-neustart.firebaseapp.com",
+      projectId: "torstens-neustart",
+      storageBucket: "torstens-neustart.firebasestorage.app",
+      messagingSenderId: "568603747598",
+      appId: "1:568603747598:web:00cb5cac90b8e423cce35f"
+    };
 
-// Firebase + Messaging initialisieren
-firebase.initializeApp(firebaseConfig);
-const messaging = firebase.messaging();
+    firebase.initializeApp(firebaseConfig);
+    const messaging = firebase.messaging();
 
-// Web Push anmelden
-messaging.getToken({
-  vapidKey: "BL1e2B7JpnFKjPeT3gVaoE0Y-KRfWzc5Zsp8TEHQjVMVa7r30mtNmkML0bx08EaYHdD-gR_v7K3AK6lLGIaIe9E"
-}).then((currentToken) => {
-  if (currentToken) {
-    console.log("Token erhalten:", currentToken);
-  } else {
-    console.warn("Kein Token erhalten. Berechtigung erteilen?");
-  }
-}).catch((err) => {
-  console.error("Fehler beim Token holen:", err);
-});
+    messaging.getToken({
+      vapidKey: "BL1e2B7JpnFKjPeT3gVaoE0Y-KRfWzc5Zsp8TEHQjVMVa7r30mtNmkML0bx08EaYHdD-gR_v7K3AK6lLGIaIe9E"
+    }).then((currentToken) => {
+      if (currentToken) {
+        console.log("Token erhalten:", currentToken);
+      } else {
+        console.warn("Kein Token erhalten.");
+      }
+    }).catch((err) => {
+      console.error("Token-Fehler:", err);
+    });
 
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').then(function(reg) {
+        console.log('Service Worker registriert', reg);
+      });
+    }
+
+    window.addEventListener('load', function() {
+      Notification.requestPermission().then(function(result) {
+        console.log("Notification-Berechtigung:", result);
+      });
+    });
   </script>
 </body>
 </html>
