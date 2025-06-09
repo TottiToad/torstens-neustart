@@ -6,50 +6,8 @@
   <title>Torstens Neustart</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" href="assets/icon.png" type="image/png" />
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js">
-    function activatePush() {
-      Notification.requestPermission().then(function(permission) {
-        if (permission === "granted") {
-          messaging.getToken({
-            vapidKey: "BL1e2B7JpnFKjPeT3gVaoE0Y-KRfWzc5Zsp8TEHQjVMVa7r30mtNmkML0bx08EaYHdD-gR_v7K3AK6lLGIaIe9E"
-          }).then((currentToken) => {
-            if (currentToken) {
-              alert("Benachrichtigungen sind aktiviert!");
-              console.log("Token:", currentToken);
-            } else {
-              alert("Kein Token erhalten. Bitte erlaube Benachrichtigungen.");
-            }
-          }).catch((err) => {
-            console.error("Token-Fehler:", err);
-          });
-        } else {
-          alert("Du hast Benachrichtigungen abgelehnt.");
-        }
-      });
-    }
-    </script>
-  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging-compat.js">
-    function activatePush() {
-      Notification.requestPermission().then(function(permission) {
-        if (permission === "granted") {
-          messaging.getToken({
-            vapidKey: "BL1e2B7JpnFKjPeT3gVaoE0Y-KRfWzc5Zsp8TEHQjVMVa7r30mtNmkML0bx08EaYHdD-gR_v7K3AK6lLGIaIe9E"
-          }).then((currentToken) => {
-            if (currentToken) {
-              alert("Benachrichtigungen sind aktiviert!");
-              console.log("Token:", currentToken);
-            } else {
-              alert("Kein Token erhalten. Bitte erlaube Benachrichtigungen.");
-            }
-          }).catch((err) => {
-            console.error("Token-Fehler:", err);
-          });
-        } else {
-          alert("Du hast Benachrichtigungen abgelehnt.");
-        }
-      });
-    }
-    </script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-messaging-compat.js"></script>
   <style>
     body { font-family: sans-serif; background: #e6d4b6; color: #3b1f00; margin: 0; padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; }
     .card { background: #fff1dc; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); max-width: 500px; width: 100%; }
@@ -65,8 +23,6 @@
     <h2>Willkommen bei deinem täglichen Neustart</h2>
     <p>Du bist nicht zerbrochen. Du bist entbunden.<br> Nicht von ihr – sondern von der Illusion, dass du nur im Spiegel einer Frau etwas wert bist.</p>
     <div class="buttons">
-      <button onclick="activatePush()">🔔 Benachrichtigungen aktivieren</button>
-    
       <button onclick="startApp()">Los geht’s</button>
     </div>
   </div>
@@ -75,8 +31,6 @@
     <h2 id="title">Tag 1</h2>
     <p id="text">Dies ist dein erster Schritt in einen selbstbestimmten Alltag.</p>
     <div class="buttons">
-      <button onclick="activatePush()">🔔 Benachrichtigungen aktivieren</button>
-    
       <button onclick="prevSlide()" id="prevBtn" disabled>Zurück</button>
       <button onclick="nextSlide()" id="nextBtn">Weiter</button>
     </div>
@@ -84,28 +38,7 @@
 
   <audio id="bg-music" src="assets/music.mp3" loop></audio>
 
-  <script src="app.js">
-    function activatePush() {
-      Notification.requestPermission().then(function(permission) {
-        if (permission === "granted") {
-          messaging.getToken({
-            vapidKey: "BL1e2B7JpnFKjPeT3gVaoE0Y-KRfWzc5Zsp8TEHQjVMVa7r30mtNmkML0bx08EaYHdD-gR_v7K3AK6lLGIaIe9E"
-          }).then((currentToken) => {
-            if (currentToken) {
-              alert("Benachrichtigungen sind aktiviert!");
-              console.log("Token:", currentToken);
-            } else {
-              alert("Kein Token erhalten. Bitte erlaube Benachrichtigungen.");
-            }
-          }).catch((err) => {
-            console.error("Token-Fehler:", err);
-          });
-        } else {
-          alert("Du hast Benachrichtigungen abgelehnt.");
-        }
-      });
-    }
-    </script>
+  <script src="app.js"></script>
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyB3XKU6rccCKmGTquhTnVCc2GER3mCmdLM",
@@ -155,27 +88,6 @@
 
     // Zeige den Einführungstext beim Start
     document.getElementById('intro').classList.add('show');
-  
-    function activatePush() {
-      Notification.requestPermission().then(function(permission) {
-        if (permission === "granted") {
-          messaging.getToken({
-            vapidKey: "BL1e2B7JpnFKjPeT3gVaoE0Y-KRfWzc5Zsp8TEHQjVMVa7r30mtNmkML0bx08EaYHdD-gR_v7K3AK6lLGIaIe9E"
-          }).then((currentToken) => {
-            if (currentToken) {
-              alert("Benachrichtigungen sind aktiviert!");
-              console.log("Token:", currentToken);
-            } else {
-              alert("Kein Token erhalten. Bitte erlaube Benachrichtigungen.");
-            }
-          }).catch((err) => {
-            console.error("Token-Fehler:", err);
-          });
-        } else {
-          alert("Du hast Benachrichtigungen abgelehnt.");
-        }
-      });
-    }
-    </script>
+  </script>
 </body>
 </html>
