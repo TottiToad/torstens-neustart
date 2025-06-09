@@ -11,21 +11,33 @@
   <style>
     body { font-family: sans-serif; background: #e6d4b6; color: #3b1f00; margin: 0; padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; }
     .card { background: #fff1dc; padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); max-width: 500px; width: 100%; }
-    .buttons { margin-top: 2rem; display: flex; justify-content: space-between; }
+    .buttons { margin-top: 2rem; display: flex; justify-content: space-around; }
     button { padding: 0.5rem 1rem; font-size: 1rem; border: none; border-radius: 0.5rem; background: #6d4c41; color: white; cursor: pointer; }
     button:disabled { background: #ccc; cursor: default; }
+    #intro, #mainContent { display: none; }
+    #intro.show, #mainContent.show { display: block; }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h2 id="title">Willkommen bei deinem täglichen Neustart</h2>
-    <p id="text">Du bist nicht zerbrochen. Du bist entbunden.<br> Nicht von ihr – sondern von der Illusion, dass du nur im Spiegel einer Frau etwas wert bist.</p>
+  <div class="card" id="intro" class="show">
+    <h2>Willkommen bei deinem täglichen Neustart</h2>
+    <p>Du bist nicht zerbrochen. Du bist entbunden.<br> Nicht von ihr – sondern von der Illusion, dass du nur im Spiegel einer Frau etwas wert bist.</p>
+    <div class="buttons">
+      <button onclick="startApp()">Los geht’s</button>
+    </div>
+  </div>
+
+  <div class="card" id="mainContent">
+    <h2 id="title">Tag 1</h2>
+    <p id="text">Dies ist dein erster Schritt in einen selbstbestimmten Alltag.</p>
     <div class="buttons">
       <button onclick="prevSlide()" id="prevBtn" disabled>Zurück</button>
       <button onclick="nextSlide()" id="nextBtn">Weiter</button>
     </div>
   </div>
-  <audio id="bg-music" src="assets/music.mp3" autoplay loop playsinline></audio>
+
+  <audio id="bg-music" src="assets/music.mp3" loop></audio>
+
   <script src="app.js"></script>
   <script>
     const firebaseConfig = {
@@ -63,6 +75,19 @@
         console.log("Notification-Berechtigung:", result);
       });
     });
+
+    function startApp() {
+      document.getElementById('intro').classList.remove('show');
+      document.getElementById('mainContent').classList.add('show');
+
+      const music = document.getElementById('bg-music');
+      music.play().catch((err) => {
+        console.log("Audio konnte nicht automatisch gestartet werden:", err);
+      });
+    }
+
+    // Zeige den Einführungstext beim Start
+    document.getElementById('intro').classList.add('show');
   </script>
 </body>
 </html>
