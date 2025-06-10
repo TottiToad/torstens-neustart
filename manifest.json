@@ -1,1 +1,13 @@
-{ "name": "Torstens Neustart", "start_url": "." }
+{
+  "name": "Torstens Neustart",
+  "short_name": "Neustart",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ede2d0",
+  "theme_color": "#7a5230",
+  "icons": [{
+    "src": "assets/icon.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }]
+}

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Torstens Neustart</title>
+  <link rel="manifest" href="manifest.json">
   <style>
     body { font-family: sans-serif; background: #ede2d0; color: #3e2f1c; margin: 0; padding: 20px; }
     h1, h2 { color: #4b2e0f; }
@@ -15,10 +16,9 @@
   </style>
 </head>
 <body>
-
-<audio autoplay loop>
-  <source src="meeresrauschen.mp3" type="audio/mpeg">
-</audio>
+  <audio autoplay loop>
+    <source src="assets/meeresrauschen.mp3" type="audio/mpeg">
+  </audio>
 
   <div class="startscreen" id="start">
     <h1>Du bist nicht zerbrochen.</h1>
@@ -29,42 +29,19 @@
   <div class="menu hidden" id="menu">
     <h2>Wähle deinen Bereich</h2>
     <button onclick="showSection('reise')">🗓️ 7-Tage-Reise</button>
-    <button onclick="showSection('entkopplung')">🔓 Entkopplung (4 Schritte)</button>
-    <button onclick="showSection('selbstwert')">💛 28-Tage-Selbstwert-Training</button>
-    <button onclick="showSection('visualisierung')">🌌 Visualisierungsreise</button>
-    <button onclick="showSection('loslassen')">🌱 Willkommen & Loslassen</button>
-    <button onclick="activatePush()">🔔 Push-Benachrichtigungen aktivieren</button>
+    <button onclick="showSection('entkopplung')">🔓 Entkopplung</button>
+    <button onclick="showSection('selbstwert')">💛 Selbstwert</button>
+    <button onclick="showSection('visualisierung')">🌌 Visualisierung</button>
+    <button onclick="showSection('loslassen')">🌱 Loslassen</button>
+    <button onclick="activatePush()">🔔 Push aktivieren</button>
   </div>
 
-  <div class="section hidden" id="reise"><h2>7-Tage-Reise</h2><ul><li>...</li></ul><div class="back" onclick="goBack()">← zurück</div></div>
-  <div class="section hidden" id="entkopplung"><h2>Entkopplung in 4 Schritten</h2><ol><li>...</li></ol><div class="back" onclick="goBack()">← zurück</div></div>
-  <div class="section hidden" id="selbstwert"><h2>28-Tage-Selbstwert</h2><ul><li>...</li></ul><div class="back" onclick="goBack()">← zurück</div></div>
-  <div class="section hidden" id="visualisierung"><h2>Ich befreie mich</h2><p>...</p><div class="back" onclick="goBack()">← zurück</div></div>
-  <div class="section hidden" id="loslassen"><h2>Tägliche Loslassübung</h2><ul><li>...</li></ul><div class="back" onclick="goBack()">← zurück</div></div>
+  <div class="section hidden" id="reise"></div>
+  <div class="section hidden" id="entkopplung"></div>
+  <div class="section hidden" id="selbstwert"></div>
+  <div class="section hidden" id="visualisierung"></div>
+  <div class="section hidden" id="loslassen"></div>
 
-  <script>
-    function showMenu() {
-      document.getElementById("start").classList.add("hidden");
-      document.getElementById("menu").classList.remove("hidden");
-    }
-    function showSection(id) {
-      document.getElementById("menu").classList.add("hidden");
-      document.querySelectorAll('.section').forEach(el => el.classList.add('hidden'));
-      document.getElementById(id).classList.remove("hidden");
-    }
-    function goBack() {
-      document.querySelectorAll('.section').forEach(el => el.classList.add('hidden'));
-      document.getElementById("menu").classList.remove("hidden");
-    }
-    function activatePush() {
-      Notification.requestPermission().then(function(permission) {
-        if (permission === 'granted') {
-          alert('Benachrichtigungen aktiviert!');
-        } else {
-          alert('Benachrichtigungen abgelehnt oder blockiert.');
-        }
-      });
-    }
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>
