@@ -6,9 +6,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Torstens Neustart</title>
   <link rel="manifest" href="manifest.json">
+  <style>
+    body {
+      background-color: #ede0d4;
+      color: #3e2f1c;
+      font-family: sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    #app {
+      padding: 2rem;
+    }
+    button {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background: #7a5230;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+    }
+  </style>
 </head>
 <body>
-  <div id="app">App wird geladen…</div>
+  <div id="app">
+    <h1>Willkommen bei deinem täglichen Neustart</h1>
+    <p>Du bist nicht zerbrochen. Du bist entbunden.<br>
+    Nicht von ihr – sondern von der Illusion, dass du nur im Spiegel einer Frau etwas wert bist.</p>
+    <button onclick="startApp()">Weiter</button>
+  </div>
   <script src="app.js"></script>
 </body>
 </html>
