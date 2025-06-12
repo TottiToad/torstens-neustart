@@ -4,7 +4,7 @@
   "short_name": "Neustart",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#ede2d0",
+  "background_color": "#ede0d4",
   "theme_color": "#7a5230",
   "icons": [{
     "src": "assets/icon.png",

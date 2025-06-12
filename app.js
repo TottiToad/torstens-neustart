@@ -1,1 +1,1 @@
-// app.js wird im nächsten Schritt ergänzt
+// Kompletter Inhalt und Navigation werden hier geladen
